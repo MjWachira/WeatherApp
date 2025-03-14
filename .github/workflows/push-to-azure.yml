@@ -1,0 +1,28 @@
+name: Push to Azure Repos
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  sync-to-azure:
+    runs-on: ubuntu-latest  # Use a Linux runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Add Azure as a remote
+        run: |
+          git remote add azure https://mjwachira1@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
+          git fetch azure
+
+      - name: Force push to Azure Repos
+        run: |
+          git push --force azure main
