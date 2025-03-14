@@ -18,10 +18,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@github.com"
 
-      - name: Add Azure as a remote
-        run: |
-          git remote add azure https://mjwachira1@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
-          git fetch azure
 
       - name: Add Azure as a remote using PAT
         run: |
