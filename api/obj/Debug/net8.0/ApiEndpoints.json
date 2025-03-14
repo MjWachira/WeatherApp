@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "WeatherController",
+    "Method": "GetWeather",
+    "RelativePath": "api/weather",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

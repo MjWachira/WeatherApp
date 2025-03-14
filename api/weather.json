@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2025-03-03",
+    "temperatureC": 22,
+    "summary": "Sunny"
+  },
+  {
+    "date": "2025-03-04",
+    "temperatureC": 18,
+    "summary": "Cloudy"
+  },
+  {
+    "date": "2025-03-04",
+    "temperatureC": 18,
+    "summary": "Cloudy"
+  },
+  {
+    "date": "2025-03-04",
+    "temperatureC": 18,
+    "summary": "Cloudy"
+  }
+]

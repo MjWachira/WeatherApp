@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "yLu06cXTQLhtQU1poQonH0MdScANtAf4OdA1L4hZa/Q=",
+  "Source": "SimpleWeatherApp",
+  "BasePath": "_content/SimpleWeatherApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
