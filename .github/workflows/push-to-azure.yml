@@ -23,6 +23,11 @@ jobs:
           git remote add azure https://mjwachira1@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
           git fetch azure
 
+      - name: Add Azure as a remote using PAT
+        run: |
+          git remote add azure https://mjwachira1:${{ secrets.AZURE_PAT }}@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
+
+
       - name: Force push to Azure Repos
         run: |
           git push --force azure main
