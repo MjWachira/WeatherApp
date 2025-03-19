@@ -1,31 +1,36 @@
-name: Deploy .NET 8 API to Azure Web App
+name: Deploy .NET 8 API to Azure App Service
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Deploy only when pushing to main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Set up .NET 8
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: '8.0.x'
 
-      - name: Build and Publish
-        run: |
-          dotnet build ./Api --configuration Release --no-restore
-          dotnet publish ./Api -c Release -o ${{ github.workspace }}/publish
+      - name: Restore Dependencies
+        run: dotnet restore ./Api
 
-      - name: Deploy to Azure Web App
+      - name: Build
+        run: dotnet build --configuration Release --no-restore --project ./Api
+
+      - name: Publish
+        run: dotnet publish -c Release -o ./publish ./Api
+
+      - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "weatherapp-backend"
+          app-name: weatherapp-backend  # Your Azure App Service name
+          slot-name: production
+          package: ./publish
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ github.workspace }}/publish
