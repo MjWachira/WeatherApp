@@ -24,9 +24,13 @@ jobs:
       - name: Build
         run: dotnet build ./api --configuration Release --no-restore
 
-
       - name: Publish
-        run: dotnet publish -c Release -o ./publish ./api
+        run: dotnet publish ./api -c Release -o ./publish
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_PUBLISH_PROFILE }}
 
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
@@ -34,4 +38,3 @@ jobs:
           app-name: weatherapp-backend  # Your Azure App Service name
           slot-name: production
           package: ./publish
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
