@@ -3,7 +3,7 @@ name: Deploy Angular to Azure Static Web Apps
 on:
   push:
     branches:
-      - main  # Adjust if needed
+      - main 
 
 jobs:
   build_and_deploy:
