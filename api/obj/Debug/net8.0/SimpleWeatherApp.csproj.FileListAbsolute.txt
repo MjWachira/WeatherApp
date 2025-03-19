@@ -64,10 +64,10 @@ C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\staticwebassets\msbuild.bui
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SimpleWeatherApp.props
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SimpleWeatherApp.props
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\SimpleWe.29F66F3A.Up2Date
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\SimpleWeatherApp.dll
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\refint\SimpleWeatherApp.dll
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\SimpleWeatherApp.pdb
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\SimpleWeatherApp.genruntimeconfig.cache
 C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\ref\SimpleWeatherApp.dll
+C:\Development\SimpleWeatherApp\api\obj\Debug\net8.0\SimpleWeatherApp.sourcelink.json
