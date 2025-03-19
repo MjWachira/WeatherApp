@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,19 +22,20 @@ jobs:
         run: dotnet restore ./api
 
       - name: Build
-        run: dotnet build ./api --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore --project ./api
 
       - name: Publish
-        run: dotnet publish ./api -c Release -o ./publish
+        run: dotnet publish -c Release -o ./publish ./api
 
-      - name: Login to Azure
+      # 🔹 NEW: Log in to Azure before deployment
+      - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_PUBLISH_PROFILE }}
 
+      # 🔹 Deploy to Azure App Service
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: weatherapp-backend  # Your Azure App Service name
-          slot-name: production
           package: ./publish
