@@ -1,38 +1,33 @@
-name: Deploy .NET 8 API to Azure App Service
+name: Push to Azure Repos
 
 on:
   push:
     branches:
-      - main  # Deploy only when pushing to main
+      - main  # Trigger on pushes to the main branch
 
 jobs:
-  build-and-deploy:
+  sync-to-azure:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup .NET 8
-        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          fetch-depth: 0  # Ensure full commit history is fetched
 
-      - name: Restore Dependencies
-        run: dotnet restore ./api
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
 
-      - name: Build
-        run: dotnet build --configuration Release --no-restore --project ./api
+      - name: Add Azure Repos as remotes
+        run: |
+          git remote add azure1 https://mjwachira1:${{ secrets.AZURE_PAT }}@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
+          git remote add azure2 https://SalesAppOrg:${{ secrets.AZURE_PAT2 }}@dev.azure.com/SalesAppOrg/WeatherApp/_git/WeatherApp
+          git fetch azure1
+          git fetch azure2
 
-      - name: Publish
-        run: dotnet publish -c Release -o ./publish ./api
-
-      # 🔹 NEW: Log in to Azure before deployment
-
-
-      # 🔹 Deploy to Azure App Service
-      - name: Deploy to Azure
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: weatherapp-backend  # Your Azure App Service name
-          package: ./publish
+      - name: Push to both Azure Repos
+        run: |
+          git push --force azure1 main
+          git push --force azure2 main
