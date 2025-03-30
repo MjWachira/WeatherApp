@@ -50,7 +50,7 @@ export class WeatherComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('https://localhost:7153/api/weather').subscribe(
+    this.http.get<any[]>('https://my-weather-app-backend.azurewebsites.net/api/weather').subscribe(
       data => this.weatherData = data,
       error => console.error('Error fetching weather data', error)
     );

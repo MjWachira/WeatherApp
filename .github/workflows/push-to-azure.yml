@@ -20,11 +20,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@github.com"
 
-      - name: Add Azure as a remote
+      - name: Add Azure Repos as remotes
         run: |
-          git remote add azure https://mjwachira1:${{ secrets.AZURE_PAT }}@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
-          git fetch azure
+          git remote add azure1 https://mjwachira1:${{ secrets.AZURE_PAT }}@dev.azure.com/mjwachira1/WeatherApp/_git/WeatherApp
+          git remote add azure2 https://SalesAppOrg:${{ secrets.AZURE_PAT2 }}@dev.azure.com/SalesAppOrg/WeatherApp/_git/WeatherApp
+          git fetch azure1
+          git fetch azure2
 
-      - name: Push full history to Azure Repos
+      - name: Push to both Azure Repos
         run: |
-          git push --force azure main
+          git push --force azure1 main
+          git push --force azure2 main

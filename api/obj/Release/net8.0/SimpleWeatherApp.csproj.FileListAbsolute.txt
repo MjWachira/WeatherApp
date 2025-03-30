@@ -35,17 +35,3 @@ C:\Development\SimpleWeatherApp\api\obj\Release\net8.0\refint\SimpleWeatherApp.d
 C:\Development\SimpleWeatherApp\api\obj\Release\net8.0\SimpleWeatherApp.pdb
 C:\Development\SimpleWeatherApp\api\obj\Release\net8.0\SimpleWeatherApp.genruntimeconfig.cache
 C:\Development\SimpleWeatherApp\api\obj\Release\net8.0\ref\SimpleWeatherApp.dll
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\web.config
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\appsettings.Development.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\appsettings.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\SimpleWeatherApp.deps.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\SimpleWeatherApp.runtimeconfig.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\SimpleWeatherApp.staticwebassets.endpoints.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\weather.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\web.config
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\appsettings.Development.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\appsettings.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\SimpleWeatherApp.deps.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\SimpleWeatherApp.runtimeconfig.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\SimpleWeatherApp.staticwebassets.endpoints.json
-C:\Development\SimpleWeatherApp\api\bin\Release\net8.0\publish\publish\weather.json
