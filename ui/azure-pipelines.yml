@@ -1,0 +1,24 @@
+trigger:
+  - main  # Change this if you're using a different branch
+
+pool:
+  name: LinuxPool  # Your self-hosted agent pool
+
+steps:
+  - checkout: self  # Ensures repo is checked out
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'  # Ensure this matches your Angular project's Node.js version
+
+  - script: |
+      cd ui  # Navigate to the correct directory
+      npm install
+      npm run build -- --configuration=production
+    displayName: 'Install Dependencies & Build Angular App'
+
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: 'ui/dist/ui'  # Adjust the path to your build output
+      output_location: ''  # Keep empty for Angular apps
+      azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_TOKEN)
