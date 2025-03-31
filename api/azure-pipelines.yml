@@ -1,0 +1,52 @@
+trigger:
+  - main
+
+pool:
+  name: LinuxPool
+
+stages:
+  - stage: Build
+    displayName: "Build .NET 8 API"
+    jobs:
+      - job: BuildAPI
+        displayName: "Build and Publish API"
+        steps:
+          - checkout: self
+
+          - task: UseDotNet@2
+            inputs:
+              packageType: 'sdk'
+              version: '8.0.x'
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          - script: |
+              cd api
+              dotnet restore
+              dotnet build --configuration Release
+              dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)/api
+            displayName: "Restore, Build, and Publish .NET 8 API"
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '$(Build.ArtifactStagingDirectory)/api'
+              artifactName: 'api'
+
+  - stage: Deploy
+    displayName: "Deploy to Azure App Service"
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: DeployAPI
+        displayName: "Deploy API to Azure App Service"
+        steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              artifactName: 'api'
+              downloadPath: '$(Pipeline.Workspace)'
+
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: "MyAzureDevOpsServiceConnection"
+              appName: "my-weather-app-backend"
+              package: "$(Pipeline.Workspace)/api"
+              runtimeStack: "DOTNETCORE|8.0"
