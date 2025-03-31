@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http'
   selector: 'app-weather',
   template: `
   <div class="container mt-4">
-    <h2 class="text-primary text-center">Weather Forecasts</h2>
+    <h2 class="text-primary text-center">Weather Forecasts..............</h2>
     <div class="row justify-content-center d-flex flex-wrap">
       <div class="col-md-4" *ngFor="let weather of weatherData">
         <div class="card shadow-sm border-primary mb-3 p-3">
